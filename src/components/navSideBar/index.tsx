@@ -1,36 +1,38 @@
 import React from 'react'
-import { useFormikContext, withFormik, Form, Field } from 'formik'
 import styles from './index.module.scss'
-// import { Redirect } from 'react-router'
+import { Icon } from '@fluentui/react/lib/Icon'
+import CardComponant from './cardComponant'
+import { mockup } from '../commons/mockUpData'
 
-const MainPage: React.FC = (props: any) => {
-  const { values, errors, touched } = useFormikContext<any>()
+const NavSideBar = (props: { selectID: string; setSelectID: any }) => {
+  const onClickCardID = (id: string) => {
+    props.setSelectID(id)
+  }
 
   return (
-    <nav>
-      <div>icon</div>
-      <h5>Notes</h5>
-      <div>Note</div>
-      <div>Note</div>
-      <div>Note</div>
-      <div>Note</div>
-      <div>Note</div>
-      <div>Note</div>
-      <div>Note</div>
+    <nav className={styles.navSideBar}>
+      <div className={styles.groupIcons}>
+        <Icon iconName="BulletedList" className={`${styles.iconStyles} ${styles.active}`} />
+        {/* <Icon iconName="GridViewMedium" className={styles.iconStyles} /> */}
+        {/* <Icon iconName="Archive" className={`${styles.iconStyles} ${styles.right}`} /> */}
+      </div>
+      <div className={styles.groupCards}>
+        <h5 className={`cGray ${styles.title}`}>Notes</h5>
+        {mockup.map((data, index) => {
+          return (
+            <CardComponant
+              key={index}
+              id={data.id}
+              title={data.title}
+              detail={data.detail}
+              isActive={props.selectID === data.id ? true : false}
+              onClickCardID={onClickCardID}
+            />
+          )
+        })}
+      </div>
     </nav>
   )
 }
 
-const EnhancedMainPage = withFormik({
-  mapPropsToValues: (props) => ({
-    //
-  }),
-  validate: (values) => {
-    //
-  },
-  handleSubmit: (values, { setFieldValue }) => {
-    // console.log(values)
-  },
-})(MainPage)
-
-export default EnhancedMainPage
+export default NavSideBar
