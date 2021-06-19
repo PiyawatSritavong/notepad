@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './index.module.scss'
 import { mockup } from '../commons/mockUpData'
 
-const ContentComponant = (props: { selectID: string }) => {
+const ContentComponant: React.FC<{ selectID: string }> = (props: { selectID: string }) => {
   const [id, setId] = useState('')
   const [title, setTitle] = useState(``)
   const [detail, setDetail] = useState(``)

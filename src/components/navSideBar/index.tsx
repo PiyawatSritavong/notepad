@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './index.module.scss'
 import { Icon } from '@fluentui/react/lib/Icon'
 import CardComponant from './cardComponant'
 import { mockup } from '../commons/mockUpData'
+import axios from 'axios'
+import { url } from '../commons/urlApi'
 
-const NavSideBar = (props: { selectID: string; setSelectID: any }) => {
+const NavSideBar: React.FC<{ selectID: string; setSelectID: any }> = (props: {
+  selectID: string
+  setSelectID: any
+}) => {
+  useEffect(() => {
+    axios
+      .get(`${url}/notepad`)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+  }, [])
+
   const onClickCardID = (id: string) => {
     props.setSelectID(id)
   }

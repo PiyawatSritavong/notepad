@@ -5,7 +5,6 @@ import NavTopBar from './components/navTopBar'
 
 function App() {
   const [selectID, setSelectID] = useState('')
-  // console.log('selectID', selectID)
   return (
     <div className="App">
       <NavSideBar selectID={selectID} setSelectID={setSelectID} />
