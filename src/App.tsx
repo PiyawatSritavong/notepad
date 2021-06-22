@@ -8,27 +8,35 @@ function App() {
   const { values, errors, touched } = useFormikContext<any>()
 
   return (
-    <div className="App" style={{ display: 'flex' }}>
-      <div style={{ width: '-webkit-fill-available', overflow: 'hidden' }}>
-        <NavSideBar />
-        <div className="wapperBody">
-          <NavTopBar />
-          <ContentComponant />
-        </div>
+    <div className="App">
+      <NavSideBar />
+      <div className="wapperBody">
+        <NavTopBar />
+        <ContentComponant />
       </div>
     </div>
   )
 }
 
 const EnhancedApp = withFormik({
-  mapPropsToValues: (props) => ({
-    //
+  mapPropsToValues: () => ({
+    selectID: '',
+    clickAction: false,
   }),
   validate: (values) => {
-    //
+    const errors: any = {}
+
+    if (!values.selectID) {
+      errors.selectID = 'Required'
+    }
+    if (!values.clickAction) {
+      errors.clickAction = 'Required'
+    }
+
+    return errors
   },
-  handleSubmit: (values, { setFieldValue }) => {
-    // console.log(values)
+  handleSubmit: (values) => {
+    alert(`Action Submit ${JSON.stringify(values)}`)
   },
 })(App)
 
