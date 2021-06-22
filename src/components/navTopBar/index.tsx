@@ -4,7 +4,6 @@ import { Icon } from '@fluentui/react'
 import axios from 'axios'
 import { url } from '../commons/urlApi'
 import { useFormikContext, withFormik, Form, Field } from 'formik'
-import { mockup } from '../commons/mockUpData'
 
 const NavTopBar: React.FC = () => {
   const { values, setFieldValue } = useFormikContext<any>()
