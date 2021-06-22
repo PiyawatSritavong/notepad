@@ -2,18 +2,40 @@ import React, { useState } from 'react'
 import ContentComponant from './components/contentComponant'
 import NavSideBar from './components/navSideBar'
 import NavTopBar from './components/navTopBar'
+import { withFormik } from 'formik'
 
 function App() {
-  const [selectID, setSelectID] = useState('')
   return (
     <div className="App">
-      <NavSideBar selectID={selectID} setSelectID={setSelectID} />
+      <NavSideBar />
       <div className="wapperBody">
-        <NavTopBar selectID={selectID} setSelectID={setSelectID} />
-        <ContentComponant selectID={selectID} />
+        <NavTopBar />
+        <ContentComponant />
       </div>
     </div>
   )
 }
 
-export default App
+const EnhancedApp = withFormik({
+  mapPropsToValues: () => ({
+    selectID: '',
+    clickAction: false,
+  }),
+  validate: (values) => {
+    const errors: any = {}
+
+    if (!values.selectID) {
+      errors.selectID = 'Required'
+    }
+    if (!values.clickAction) {
+      errors.clickAction = 'Required'
+    }
+
+    return errors
+  },
+  handleSubmit: (values) => {
+    alert(`Action Submit ${JSON.stringify(values)}`)
+  },
+})(App)
+
+export default EnhancedApp

@@ -1,4 +1,4 @@
-.navSideBar {
+.navSideBar, .navSideBarShort {
   background-color: #242625;
   border-radius: 3px;
   
@@ -7,6 +7,11 @@
 
   display: flex;
   flex-direction: column;
+  transition: width 2s;
+}
+
+.navSideBarShort {
+  width: 60px;
 }
 
 .groupIcons {
@@ -53,12 +58,19 @@
     height: 50px;
     padding: 5px 10px;
 
+    overflow: hidden;
+
     .titleCard {
-      font-size: 14px;
+      font-size: 15px;
     }
 
     .detailCard {
-      font-size: 13px;
+      font-size: 14px;
+      white-space: nowrap;
+
+      span {
+        font-size: 13px;
+      }
     }
   }
 
