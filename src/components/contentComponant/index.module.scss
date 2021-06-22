@@ -1,0 +1,25 @@
+.groupInput {
+  padding: 30px 30px 0px 30px;
+  margin: 10px 0 0 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  height: 100%;
+  
+  .inputTitle, .inputTextArea {
+    background-color: #1e1e1e;
+    border: none;
+
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .inputTextArea {
+    height: 100%;
+
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
