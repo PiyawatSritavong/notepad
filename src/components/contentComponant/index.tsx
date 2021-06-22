@@ -3,6 +3,7 @@ import styles from './index.module.scss'
 import axios from 'axios'
 import { url } from '../commons/urlApi'
 import { useFormikContext, withFormik, Form, Field } from 'formik'
+import { mockup } from '../commons/mockUpData'
 
 const ContentComponant: React.FC = () => {
   const { values, errors, touched, setFieldValue } = useFormikContext<any>()
@@ -25,16 +26,22 @@ const ContentComponant: React.FC = () => {
       return
     }
 
-    axios
-      .get(`${url}/notepad/${values.selectID}`)
-      .then((res) => {
-        // console.log(res)
-        setTitle(res.data.title)
-        setDetail(res.data.note)
-      })
-      .catch((err) => {
-        console.log(err.response)
-      })
+    const find = mockup.find((ele) => ele.id === values.selectID)
+    if (find) {
+      setTitle(find.title)
+      setDetail(find.note)
+    }
+
+    // axios
+    //   .get(`${url}/notepad/${values.selectID}`)
+    //   .then((res) => {
+    //     // console.log(res)
+    //     setTitle(res.data.title)
+    //     setDetail(res.data.note)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response)
+    //   })
   }, [values.selectID])
 
   // If Click save call api edit or create

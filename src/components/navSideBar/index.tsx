@@ -5,6 +5,7 @@ import CardComponant from './cardComponant'
 import axios from 'axios'
 import { url } from '../commons/urlApi'
 import { useFormikContext } from 'formik'
+import { mockup } from '../commons/mockUpData'
 
 interface IListCards {
   id: string
@@ -21,16 +22,19 @@ const NavSideBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true)
 
   useEffect(() => {
-    axios
-      .get(`${url}/notepad`)
-      .then((res) => {
-        // console.log('NavSideBar', res)
-        setListCards(res.data)
-        setFieldValue('clickAction', false, false)
-      })
-      .catch((err) => {
-        console.log(err.response)
-      })
+    setListCards(mockup)
+    setFieldValue('clickAction', false, false)
+
+    // axios
+    //   .get(`${url}/notepad`)
+    //   .then((res) => {
+    //     // console.log('NavSideBar', res)
+    //     setListCards(res.data)
+    //     setFieldValue('clickAction', false, false)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response)
+    //   })
   }, [values.clickAction])
 
   const onClickCardID = (id: string) => {
