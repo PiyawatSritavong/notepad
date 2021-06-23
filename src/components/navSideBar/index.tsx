@@ -22,6 +22,9 @@ const NavSideBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true)
 
   useEffect(() => {
+    axios.get('http://localhost:11000/notepad').then((res) => {
+      console.log(res.data)
+    })
     setListCards(mockup)
   }, [])
 
