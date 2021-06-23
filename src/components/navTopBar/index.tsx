@@ -10,18 +10,6 @@ const NavTopBar: React.FC = () => {
 
   const removeCard = () => {
     setFieldValue('selectID', '', false)
-    setFieldValue('clickAction', true, false)
-
-    // axios
-    //   .delete(`${url}/notepad/${values.selectID}`)
-    //   .then((res) => {
-    //     console.log('removeCard', res)
-    //     setFieldValue('selectID', '', false)
-    //     setFieldValue('clickAction', true, false)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response)
-    //   })
   }
 
   return (
@@ -35,11 +23,7 @@ const NavTopBar: React.FC = () => {
 
         {values.selectID && (
           <>
-            <Icon
-              iconName="Save"
-              className={`${styles.iconStyles}`}
-              onClick={() => setFieldValue('clickAction', true, false)}
-            />
+            <Icon iconName="Save" className={`${styles.iconStyles}`} />
           </>
         )}
 

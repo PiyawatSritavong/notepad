@@ -22,14 +22,17 @@ const EnhancedApp = withFormik({
   mapPropsToValues: () => ({
     selectID: '',
     clickAction: false,
+
+    title: '',
+    detail: '',
   }),
   validate: (values) => {
     const errors: any = {}
 
-    if (!values.selectID) {
+    if (!values.title) {
       errors.selectID = 'Required'
     }
-    if (!values.clickAction) {
+    if (!values.detail) {
       errors.clickAction = 'Required'
     }
 
@@ -37,6 +40,7 @@ const EnhancedApp = withFormik({
   },
   handleSubmit: (values) => {
     alert(`Action Submit ${JSON.stringify(values)}`)
+    // Action Create or Update
   },
 })(App)
 
