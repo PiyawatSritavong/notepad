@@ -23,19 +23,7 @@ const NavSideBar: React.FC = () => {
 
   useEffect(() => {
     setListCards(mockup)
-    setFieldValue('clickAction', false, false)
-
-    // axios
-    //   .get(`${url}/notepad`)
-    //   .then((res) => {
-    //     // console.log('NavSideBar', res)
-    //     setListCards(res.data)
-    //     setFieldValue('clickAction', false, false)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response)
-    //   })
-  }, [values.clickAction])
+  }, [])
 
   const onClickCardID = (id: string) => {
     setFieldValue('selectID', id, false)
